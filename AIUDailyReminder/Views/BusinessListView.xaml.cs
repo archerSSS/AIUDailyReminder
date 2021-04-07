@@ -58,5 +58,17 @@ namespace AIUDailyReminder.Views
 
             CalendarEnabled = !CalendarEnabled;
         }
+
+        
+
+        private void Grid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            string s = "";
+        }
+
+        private void TextBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
+        }
     }
 }

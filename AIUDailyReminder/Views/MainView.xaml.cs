@@ -95,5 +95,10 @@ namespace AIUDailyReminder.Views
         {
             UpdateVisibility(false, true);
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

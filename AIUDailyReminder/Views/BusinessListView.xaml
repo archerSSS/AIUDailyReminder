@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AIUDailyReminder.Views"
+             xmlns:vm="clr-namespace:AIUDailyReminder.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <UserControl.Resources>
+        <vm:BusinessListViewModel x:Key="BLVM"></vm:BusinessListViewModel>
+    </UserControl.Resources>
+    <Grid DataContext="{StaticResource BLVM}">
         <Grid.RowDefinitions>
             <RowDefinition Height="33*"/>
             <RowDefinition Height="59*"/>
@@ -29,7 +33,7 @@
             <Button Grid.Column="1" Margin="0,0,0,0" Content="Date" Click="OpenCalendar_Click"></Button>
         </Grid>
         
-        <TextBox TextWrapping="Wrap" Grid.Row="3"></TextBox>
+        <TextBox TextWrapping="Wrap" Grid.Row="3" IsEnabled="{Binding Path=IsDescriptionEnabled}" IsEnabledChanged="TextBox_IsEnabledChanged"></TextBox>
         
         <Button Grid.Row="4">
             <TextBlock FontSize="20" Text="Add"></TextBlock>
