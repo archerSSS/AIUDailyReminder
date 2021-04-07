@@ -24,5 +24,39 @@ namespace AIUDailyReminder.Views
         {
             InitializeComponent();
         }
+
+
+
+        public bool CalendarEnabled
+        {
+            get { return (bool)GetValue(CalendarEnabledProperty); }
+            set { SetValue(CalendarEnabledProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CalendarEnabled.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CalendarEnabledProperty =
+            DependencyProperty.Register("CalendarEnabled", typeof(bool), typeof(BusinessListView), new PropertyMetadata(false));
+
+
+
+
+
+        public Visibility CalendarVisibility
+        {
+            get { return (Visibility)GetValue(CalendarVisibilityProperty); }
+            set { SetValue(CalendarVisibilityProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CalendarVisibility.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CalendarVisibilityProperty =
+            DependencyProperty.Register("CalendarVisibility", typeof(Visibility), typeof(BusinessListView), new PropertyMetadata(Visibility.Hidden));
+
+        private void OpenCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            if (CalendarVisibility == Visibility.Visible) CalendarVisibility = Visibility.Hidden;
+            else CalendarVisibility = Visibility.Visible;
+
+            CalendarEnabled = !CalendarEnabled;
+        }
     }
 }

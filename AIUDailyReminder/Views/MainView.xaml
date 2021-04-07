@@ -1,4 +1,5 @@
-﻿<Window x:Class="AIUDailyReminder.Views.MainView"
+﻿<Window x:Name="MainWindow" 
+        x:Class="AIUDailyReminder.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,17 +18,21 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="1" Orientation="Horizontal">
-            <Button Width="100">
+            <Button Width="100" Click="ReminderView_Click">
                 <TextBlock Text="Rem"></TextBlock>
             </Button>
-            <Button Width="100">
+            <Button Width="100" Click="BusinessListView_Click">
                 <TextBlock Text="List"></TextBlock>
             </Button>
             <Button Width="100">
                 <TextBlock Text="Future features"></TextBlock>
             </Button>
         </StackPanel>
-        <vs:BusinessListView Grid.Column="1" Grid.Row="1"></vs:BusinessListView>
-        <!--vs:ReminderView Grid.Column="1" Grid.Row="1"></vs:ReminderView-->
+        <vs:BusinessListView Grid.Column="1" Grid.Row="1" 
+                             IsEnabled="{Binding ElementName=MainWindow, Path=BusinessListEnabled}"
+                             Visibility="{Binding ElementName=MainWindow, Path=BusinessListVisibility}"></vs:BusinessListView>
+        <vs:ReminderView Grid.Column="1" Grid.Row="1"
+                         IsEnabled="{Binding ElementName=MainWindow, Path=ReminderEnabled}"
+                         Visibility="{Binding ElementName=MainWindow, Path=ReminderVisibility}"></vs:ReminderView>
     </Grid>
 </Window>
