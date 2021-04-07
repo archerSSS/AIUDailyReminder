@@ -27,7 +27,7 @@
                 <TextBlock Text="Future features"></TextBlock>
             </Button>
         </StackPanel>
-        <vs:BuisnessListView Grid.Column="1" Grid.Row="1"></vs:BuisnessListView>
+        <vs:BusinessListView Grid.Column="1" Grid.Row="1"></vs:BusinessListView>
         <!--vs:ReminderView Grid.Column="1" Grid.Row="1"></vs:ReminderView-->
     </Grid>
 </Window>

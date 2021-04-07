@@ -18,9 +18,9 @@ namespace AIUDailyReminder.Views
     /// <summary>
     /// Логика взаимодействия для BuisnessListView.xaml
     /// </summary>
-    public partial class BuisnessListView : UserControl
+    public partial class BusinessListView : UserControl
     {
-        public BuisnessListView()
+        public BusinessListView()
         {
             InitializeComponent();
         }

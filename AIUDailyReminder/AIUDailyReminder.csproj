@@ -55,8 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\BuisnessListView.xaml.cs">
-      <DependentUpon>BuisnessListView.xaml</DependentUpon>
+    <Compile Include="Models\BusinessUnit.cs" />
+    <Compile Include="ViewModels\BusinessListViewModel.cs" />
+    <Compile Include="Views\BusinessListView.xaml.cs">
+      <DependentUpon>BusinessListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -76,7 +78,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\BuisnessListView.xaml">
+    <Page Include="Views\BusinessListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,9 +117,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
