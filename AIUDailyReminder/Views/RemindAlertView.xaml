@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AIUDailyReminder.Views"
         mc:Ignorable="d"
-        Title="RemindAlertView" Height="200" Width="200">
+        Title="RemindAlertView" Height="200" Width="300">
     <Grid>
-        <TextBlock x:Name="TextAlert" Text="{Binding Path=AlertBusiness}"></TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TextAlert" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="{Binding Path=AlertBusiness.RemindDescription}"></TextBlock>
+        <Button Grid.Row="2">
+            <TextBlock Text="Удалить напоминание"></TextBlock>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="Отложить напоминание"></TextBlock>
+        </Button>
     </Grid>
 </Window>

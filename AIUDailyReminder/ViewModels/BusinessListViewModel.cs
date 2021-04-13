@@ -22,6 +22,7 @@ namespace AIUDailyReminder.ViewModels
         private DateTime currentDate;
         private BusinessUnit alertBusiness;
         private bool isDescriptionEnabled;
+        private bool isAlertVisible;
         private ICommand relayCommand;
         
         public ObservableCollection<BusinessUnit> BusinessList { get { return businessList; } set { businessList = value; } }
@@ -39,6 +40,7 @@ namespace AIUDailyReminder.ViewModels
             newBusinesses = new Stack<BusinessUnit>();
             NewBusiness = new BusinessUnit() { RemindDate = DateTime.Now };
             IsDescriptionEnabled = true;
+            isAlertVisible = false;
 
             currentDate = DateTime.Now;
             Thread t = new Thread(UpdateBusiness);
@@ -50,40 +52,40 @@ namespace AIUDailyReminder.ViewModels
         {
             Thread.Sleep(10000);
 
-            if (newBusinesses.Count != 0)
+            if (!isAlertVisible)
             {
-                foreach (BusinessUnit BU in newBusinesses)
+                if (newBusinesses.Count != 0)
                 {
-                    AddBusiness(BU);
+                    foreach (BusinessUnit BU in newBusinesses)
+                    {
+                        AddBusiness(BU);
+                    }
+                    newBusinesses.Clear();
                 }
-                newBusinesses.Clear();
-            }
 
+
+                if (AlertBusiness != null)
+                {
+                    IsDescriptionEnabled = false;
+                    isAlertVisible = true;
+                    //System.Windows.MessageBox.Show("dasssssssss");
+
+                    //System.Windows.MessageBoxButton BUTT = System.Windows.MessageBoxButton;
+                    //System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show(AlertBusiness.RemindDescription, AlertBusiness.Name, System.Windows.MessageBoxButton.YesNo);
+                }
+
+
+                foreach (BusinessUnit BU in BusinessList)
+                {
+                    if (BU.RemindDate.Year == currentDate.Year && BU.RemindDate.Month == currentDate.Month && BU.RemindDate.Day == currentDate.Day)
+                    {
+                        AlertBusiness = BU;
+                        IsDescriptionEnabled = true;
+                    }
+
+                }
+            }
             
-            if (AlertBusiness != null)
-            {
-                IsDescriptionEnabled = false;
-                Button b = new Button();
-                b.Text = "dsa";
-
-                Form f = new Form();
-                f.AcceptButton = b;
-                f.ShowDialog();
-                System.Windows.MessageBox.Show("dasssssssss");
-
-                //System.Windows.MessageBoxButton BUTT = System.Windows.MessageBoxButton;
-                //System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show(AlertBusiness.RemindDescription, AlertBusiness.Name, System.Windows.MessageBoxButton.YesNo);
-            }
-
-            foreach (BusinessUnit BU in BusinessList)
-            {
-                if (BU.RemindDate.Year == currentDate.Year && BU.RemindDate.Month == currentDate.Month && BU.RemindDate.Day == currentDate.Day)
-                {
-                    AlertBusiness = BU;
-                    IsDescriptionEnabled = true;
-                }
-                    
-            }
             new Thread(UpdateBusiness).Start();
         }
 
