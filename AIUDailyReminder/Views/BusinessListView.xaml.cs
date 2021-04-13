@@ -59,7 +59,9 @@ namespace AIUDailyReminder.Views
             CalendarEnabled = !CalendarEnabled;
         }
 
-        
+
+
+
 
         private void Grid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -69,6 +71,21 @@ namespace AIUDailyReminder.Views
         private void TextBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             
+            /*if (!TextDescription.IsEnabled)
+            {
+                RemindAlertView RAV = new RemindAlertView();
+                RAV.DataContext = DataContext;
+                RAV.Show();
+            }*/
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TextName.Text) && !string.IsNullOrEmpty(TextDescription.Text) && CalendarRemindDate.SelectedDate != null)
+            {
+                
+            }
         }
     }
+
 }

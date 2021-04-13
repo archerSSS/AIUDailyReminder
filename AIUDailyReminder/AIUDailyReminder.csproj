@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\BusinessCommand.cs" />
     <Compile Include="Models\BusinessUnit.cs" />
     <Compile Include="ViewModels\BusinessListViewModel.cs" />
     <Compile Include="Views\BusinessListView.xaml.cs">
@@ -62,6 +64,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RemindAlertView.xaml.cs">
+      <DependentUpon>RemindAlertView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReminderView.xaml.cs">
       <DependentUpon>ReminderView.xaml</DependentUpon>
@@ -83,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RemindAlertView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
